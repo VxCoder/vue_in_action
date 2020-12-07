@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="reversedText" />
+        <p>Your reverse {{ reversedText }} </p>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                text: "123,456"
+            },
+            computed: {
+                reversedText: {
+                    get: function () {
+                        return this.text.split(",").reverse().join(",");
+                    },
+                    set: function (newValue) {
+                        console.log(newValue);
+                        this.text = newValue;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
