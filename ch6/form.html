@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <label>输入框</label><br/>
+        <input type="text" v-model="message" placeholder="input..."/>
+        <p>text input content: {{ message }}</p>
+
+        <label>多行输入框</label><br/>
+        <textarea v-model="message" placeholder="input ..."/></textarea>
+        <p>input content: </p>
+        <p style="white-space: pre">{{ message }}</p>
+        <br/>
+
+        <input type="radio" :checked="picked"/>
+        <label>单选按钮</label><br/>
+
+        <label>多选按钮</label><br/>
+        <input type="radio" v-model="selected" value="html" id="html"/>
+        <label for="html">HTML</label>
+        <input type="radio" v-model="selected" value="js" id="js" />
+        <label for="js">JS</label>
+        <input type="radio" v-model="selected" value="css" id="css"/>
+        <label for="css">CSS</label>
+        <p>selected: {{ selected }}</p><br/>
+
+        <label>复选框</label><br/>
+        <input type="checkbox" v-model="checked" value="html" id="chtml"/>
+        <label for="chtml">HTML</label>
+        <input type="checkbox" v-model="checked" value="js" id="cjs" />
+        <label for="cjs">JS</label>
+        <input type="checkbox" v-model="checked" value="css" id="ccss"/>
+        <label for="ccss">CSS</label>
+        <p>checked: {{ checked }}</p><br/>
+
+        <label>选择列表</label><br/>
+        <select v-model="selected" multiple>
+            <option>html</option>
+            <option value="js">JavaScript</option>
+            <option>css</option>
+        </select>
+        <p>selected: {{ selected }}</p>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        // .lazy   数据更新后再触发
+        // .number 数字转义
+        // .trim  过滤首尾空格
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "",
+                picked: false,
+                selected: "js",
+                checked: ['html', 'css'],
+                multiSelected: ['js']
+            }
+        })
+    </script>
+</body>
+
+</html>
