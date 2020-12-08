@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>cart Demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <template v-if="list.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Counter</th>
+                        <th>Product Selected
+                            <input type="checkbox" @change="handleAllSelected">
+                        </th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item, index) in list">
+                        <td>{{ index + 1}}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>
+                            <button @click="handleReduce(index)"
+                                    :disabled="item.count === 1"> - </button>
+                            {{ item.count}}
+                            <button @click="handleAdd(index)"> + </button>
+                        </td>
+                        <td>
+                            <input type="checkbox" v-model="item.selected"/>
+                        </td>
+                        <td>
+                            <button @click="handleRemove(index)">remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>Subtotal: ￥{{ totalPrice }}</div>
+        </template>
+        <div v-else>Cart is empty!!!</div>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

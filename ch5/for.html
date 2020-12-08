@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(book, index) in books">{{index}} - {{book.name}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value, key, index) in user">
+                {{ index }} - {{ key }}: {{ value }}
+            </li>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                books: [
+                    {'name': '<vue.js>'},
+                    {'name': '<javascript>'},
+                    {'name': '<javascript v11>'}
+                ],
+                user: {
+                    'name': 'vxcoder',
+                    'gender': 'man',
+                    'age': 26
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

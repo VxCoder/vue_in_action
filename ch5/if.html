@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue If Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="type === 'name'">
+            <label>UserName:</label>
+            <input placeholder="Input username" key="user"/>
+        </template>
+        <template v-else>
+            <label>Email:</label>
+            <input placeholder="Input email" key="email"/>
+        </template>
+        <br/>
+        <button @click="handleToggleClick">Click to change</button>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                type: 'name'
+            },
+            methods: {
+                handleToggleClick: function () {
+                    this.type = this.type === 'name' ? 'email' : 'name';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
