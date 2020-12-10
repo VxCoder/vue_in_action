@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <component-a></component-a>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        let bus = new Vue();
+        Vue.component('component-a', {
+            template: '<button @click="handleEvent">post event</button>',
+            methods:{
+                handleEvent: function (){
+                    bus.$emit('on-message', 'from component a content');
+                }
+            }
+        })
+        let app = new Vue({
+            el: "#app",
+            data: {
+                message: ''
+            },
+            mounted: function () {
+                let _this = this;
+                bus.$on('on-message', function(msg){
+                    _this.message = msg;
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

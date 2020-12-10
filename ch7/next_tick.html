@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="div" v-if="showDiv">This is text</div>
+        <button @click="getText">Get div content</button>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                showDiv: false
+            },
+            methods:{
+                getText: function (){
+                    this.showDiv = true;
+                    this.$nextTick(function (){
+                        let text = document.getElementById('div').innerHTML;
+                        window.alert(text);
+                    })
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

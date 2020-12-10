@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue Demo</title>
+</head>
+
+<body>
+    <div id="app">
+        <child-component></child-component>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        Vue.component('child-component', function (resolve, reject){
+            window.setTimeout(function (){
+                resolve({
+                    template: '<div>I\'m a async component</div>'
+                })
+            }, 2000);
+        });
+        let app = new Vue({
+            el: "#app",
+            data: {
+                name: 'vxcoder'
+            }
+        })
+    </script>
+</body>
+
+</html>
